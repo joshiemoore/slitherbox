@@ -87,4 +87,7 @@ snakebox is early in development, so there is still much to do. Below is a list 
 * Implement more commands, to at least approximate a useful replacement for the GNU Core Utilities.
 * Add more features to existing commands, including various flags and options which would be expected
   to exist in established implementations of that command.
+* Add more comprehensive exception handling to command implementations. Incorrect inputs or other
+  issues will often cause the Python library functions to throw exceptions, and we should display
+  graceful error messages instead of showing the actual exception to the user running the command.
 * ... 
