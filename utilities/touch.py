@@ -17,3 +17,5 @@ def main(args):
         os.utime(_args.file, None)
     except OSError:
         open(_args.file, 'a').close()
+
+    return 0

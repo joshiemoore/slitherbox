@@ -14,3 +14,4 @@ def main(args):
     _args = parser.parse_args(args=args)
 
     os.mkdir(_args.dir)
+    return 0

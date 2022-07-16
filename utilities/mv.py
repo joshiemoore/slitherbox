@@ -15,3 +15,4 @@ def main(args):
     _args = parser.parse_args(args=args)
 
     shutil.move(_args.source, _args.destination)
+    return 0

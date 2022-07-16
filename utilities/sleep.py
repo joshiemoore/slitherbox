@@ -14,3 +14,4 @@ def main(args):
     _args = parser.parse_args(args=args)
 
     time.sleep(_args.delay)
+    return 0

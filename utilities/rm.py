@@ -23,3 +23,5 @@ def main(args):
         shutil.rmtree(_args.file)
     else:
         os.remove(_args.file)
+
+    return 0

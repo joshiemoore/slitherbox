@@ -90,8 +90,13 @@ if __name__ == '__main__':
     elif invoked_name == 'sb_list':
         args = list_utilities()
 
-    result = run_utility(invoked_name, args)
+    status_code = run_utility(invoked_name, args)
 
-    # exit with a failing status code if the utility returned one
-    if result:
-        exit(result)
+    # exit with status code returned by utility
+    if status_code is None or not isinstance(status_code, int):
+        raise ValueError(
+            'snakebox utilities must return an integer status code, '\
+            f'but {invoked_name} returned: {status_code}'
+        )
+
+    exit(status_code)

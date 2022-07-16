@@ -23,3 +23,4 @@ def main(args):
             install_count += 1
 
     print(f'\nLinked {install_count} utilities')
+    return 0

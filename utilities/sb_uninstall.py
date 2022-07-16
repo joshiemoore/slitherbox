@@ -20,3 +20,4 @@ def main(args):
             uninstall_count += 1
 
     print(f'\nUnlinked {uninstall_count} utilities')
+    return 0

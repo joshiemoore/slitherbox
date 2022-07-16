@@ -15,3 +15,5 @@ def main(args):
 
     with open(_args.file, 'rb') as f:
         sys.stdout.buffer.write(f.read())
+
+    return 0

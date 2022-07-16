@@ -8,3 +8,5 @@ def main(args):
     args.sort()
     for util in args:
         print(util)
+
+    return 0
