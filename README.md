@@ -11,7 +11,7 @@ snakebox is primarily intended for use with [xonsh](https://xon.sh/), though it 
 
 The `cd` and `which` commands are absent from snakebox because these commands are built-in to xonsh.
 
-snakebox is Free Software licensed under the terms of GPLv3 or later.
+snakebox is free software licensed under the terms of GPLv3 or later.
 
 ## Installation
 Installation and uninstallation of snakebox is simple, and will not overwrite any existing utilities on your system.
