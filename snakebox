@@ -7,6 +7,36 @@ import importlib.util
 SNAKEBOX_ROOT = os.path.dirname(os.path.realpath(__file__))
 
 
+__header__ = f"""
+snakebox - Drop-in Python replacement for common shell utilities
+Usage: snakebox <command> [args...]
+
+To install snakebox, run:
+
+  $ ./snakebox sb_install
+
+Then add '{SNAKEBOX_ROOT}' to the beginning of your path
+to run snakebox commands directly from your shell.
+"""
+
+__copyright__ = """
+Copyright (c) 2022, Joshua Moore
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+"""
+
+
 def run_utility(utility_name, args):
     # load utility module
     utility_spec = importlib.util.spec_from_file_location(
@@ -44,23 +74,8 @@ if __name__ == '__main__':
 
     if invoked_name == 'snakebox':
         if len(sys.argv) < 2:
-            print("snakebox")
-            print("Usage: snakebox <command> [args...]")
-            print("""
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <https://www.gnu.org/licenses/>.
-            """)
+            print(__header__)
+            print(__copyright__)
             exit()
         invoked_name = sys.argv[1]
         args = sys.argv[2:]
