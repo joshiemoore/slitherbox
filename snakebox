@@ -1,0 +1,66 @@
+#!/usr/bin/env python3
+
+import os
+import sys
+import importlib.util
+
+SNAKEBOX_ROOT = os.path.dirname(os.path.realpath(__file__))
+
+
+def run_utility(utility_name, args):
+    # load utility module
+    utility_spec = importlib.util.spec_from_file_location(
+        f'{utility_name}',
+        f'{SNAKEBOX_ROOT}/utilities/{utility_name}.py'
+    )
+    utility = importlib.util.module_from_spec(utility_spec)
+
+    try:
+        utility_spec.loader.exec_module(utility)
+    except FileNotFoundError:
+        print(f'No such snakebox utility: {utility_spec}')
+        exit()
+    
+    # run utility
+    return utility.main(args)
+
+
+def list_utilities():
+    ignore = ['__pycache__']
+    result = []
+    for util in os.listdir(SNAKEBOX_ROOT + '/utilities/'):
+        if util in ignore:
+            continue
+        result.append(util.replace('.py', ''))
+    return result
+
+
+if __name__ == '__main__':
+    # clean up invoked name
+    invoked_name = sys.argv[0].replace('./', '')
+    invoked_name = os.path.basename(
+        os.path.normpath(invoked_name)
+    )
+
+    if invoked_name == 'snakebox':
+        if len(sys.argv) < 2:
+            print("Usage: snakebox <command> [args...]")
+            exit()
+        invoked_name = sys.argv[1]
+        args = sys.argv[2:]
+    else:
+        args = sys.argv[1:]
+
+    # handle special snakebox-internal commands
+    if invoked_name == 'sb_install':
+        args = [SNAKEBOX_ROOT] + list_utilities()
+    elif invoked_name == 'sb_uninstall':
+        args = [SNAKEBOX_ROOT] + list_utilities()
+    elif invoked_name == 'sb_list':
+        args = list_utilities()
+
+    result = run_utility(invoked_name, args)
+
+    # exit with a failing status code if the utility returned one
+    if result:
+        exit(result)
