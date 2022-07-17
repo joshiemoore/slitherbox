@@ -53,7 +53,8 @@ In the future, we may add more directories to host non-core contrib/miscellaneou
 them separate from the core utilities and allow them to be optionally installed.
 
 ### Creating new commands
-Adding commands to snakebox is very simple, even for Python beginners.
+Adding commands to snakebox is very simple, even for Python beginners. Many core utilities are just
+wrappers for one line calls to the Python standard library.
 
 To create a new command, first create a Python file in the `utilities/` directory corresponding to your
 command's name. For example, if you want to run your command as `$ mycoolcmd`, name the file `mycoolcmd.py`.
