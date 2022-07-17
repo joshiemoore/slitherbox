@@ -49,7 +49,7 @@ def run_utility(utility_name, args):
         utility_spec.loader.exec_module(utility)
     except FileNotFoundError:
         print(f'No such snakebox utility: {utility_spec}')
-        exit()
+        exit(1)
     
     # run utility
     return utility.main(args)
