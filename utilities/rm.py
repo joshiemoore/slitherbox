@@ -11,17 +11,18 @@ import argparse
 
 def main(args):
     parser = argparse.ArgumentParser(description='Remove a file or directory.')
-    parser.add_argument('file', type=str)
+    parser.add_argument('files', type=str, nargs='+')
     parser.add_argument('-r', action='store_true',
         help='Remove a directory recursively')
     _args = parser.parse_args(args=args)
 
-    if os.path.isdir(_args.file):
-        if not _args.r:
-            print(_args.file + ' is a directory')
-            return 1
-        shutil.rmtree(_args.file)
-    else:
-        os.remove(_args.file)
+    for file in _args.files:
+        if os.path.isdir(file):
+            if not _args.r:
+                print(file + ' is a directory')
+                return 1
+            shutil.rmtree(file)
+        else:
+            os.remove(file)
 
     return 0
