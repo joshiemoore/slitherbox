@@ -4,19 +4,19 @@ import os
 import sys
 import importlib.util
 
-SNAKEBOX_ROOT = os.path.dirname(os.path.realpath(__file__))
+SLITHERBOX_ROOT = os.path.dirname(os.path.realpath(__file__))
 
 
 __header__ = f"""
-snakebox - Drop-in Python replacement for common shell utilities
-Usage: snakebox <command> [args...]
+slitherbox - Drop-in Python replacement for common shell utilities
+Usage: slitherbox <command> [args...]
 
-To install snakebox, run:
+To install slitherbox, run:
 
-  $ ./snakebox sb_install
+  $ ./slitherbox sb_install
 
-Then add '{SNAKEBOX_ROOT}' to the beginning of your path
-to run snakebox commands directly from your shell.
+Then add '{SLITHERBOX_ROOT}' to the beginning of your path
+to run slitherbox commands directly from your shell.
 """
 
 __copyright__ = """
@@ -41,14 +41,14 @@ def run_utility(utility_name, args):
     # load utility module
     utility_spec = importlib.util.spec_from_file_location(
         f'{utility_name}',
-        f'{SNAKEBOX_ROOT}/utilities/{utility_name}.py'
+        f'{SLITHERBOX_ROOT}/src/utilities/{utility_name}.py'
     )
     utility = importlib.util.module_from_spec(utility_spec)
 
     try:
         utility_spec.loader.exec_module(utility)
     except FileNotFoundError:
-        print(f'No such snakebox utility: {utility_spec}')
+        print(f'No such slitherbox utility: {utility_spec}')
         exit(1)
     
     # run utility
@@ -58,7 +58,7 @@ def run_utility(utility_name, args):
 def list_utilities():
     ignore = ['__pycache__']
     result = []
-    for util in os.listdir(SNAKEBOX_ROOT + '/utilities/'):
+    for util in os.listdir(SLITHERBOX_ROOT + '/src/utilities/'):
         if util in ignore:
             continue
         result.append(util.replace('.py', ''))
@@ -72,7 +72,7 @@ if __name__ == '__main__':
         os.path.normpath(invoked_name)
     )
 
-    if invoked_name == 'snakebox':
+    if invoked_name == 'slitherbox':
         if len(sys.argv) < 2:
             print(__header__)
             print(__copyright__)
@@ -82,11 +82,11 @@ if __name__ == '__main__':
     else:
         args = sys.argv[1:]
 
-    # handle special snakebox-internal commands
+    # handle special slitherbox-internal commands
     if invoked_name == 'sb_install':
-        args = [SNAKEBOX_ROOT] + list_utilities()
+        args = [SLITHERBOX_ROOT] + list_utilities()
     elif invoked_name == 'sb_uninstall':
-        args = [SNAKEBOX_ROOT] + list_utilities()
+        args = [SLITHERBOX_ROOT] + list_utilities()
     elif invoked_name == 'sb_list':
         args = list_utilities()
 
@@ -95,7 +95,7 @@ if __name__ == '__main__':
     # exit with status code returned by utility
     if status_code is None or not isinstance(status_code, int):
         raise ValueError(
-            'snakebox utilities must return an integer status code, '\
+            'slitherbox utilities must return an integer status code, '\
             f'but {invoked_name} returned: {status_code}'
         )
 

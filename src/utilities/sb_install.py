@@ -1,22 +1,22 @@
 """
 sb_install
 
-Install snakebox by creating symbolic links to the
-main snakebox script.
+Install slitherbox by creating symbolic links to the
+main slitherbox script.
 """
 
 import os
 
 
 def main(args):
-    SNAKEBOX_ROOT = args[0]
+    SLITHERBOX_ROOT = args[0]
     utilities = args[1:]
 
-    sb_main = SNAKEBOX_ROOT + '/snakebox'
+    sb_main = SLITHERBOX_ROOT + '/slitherbox'
 
     install_count = 0
     for util in utilities:
-        symlink_path = SNAKEBOX_ROOT + '/' + util
+        symlink_path = SLITHERBOX_ROOT + '/' + util
         if not os.path.exists(symlink_path):
             print(f'Linking {util}...')
             os.symlink(sb_main, symlink_path)

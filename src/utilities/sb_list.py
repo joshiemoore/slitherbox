@@ -1,7 +1,7 @@
 """
 sb_list
 
-List available snakebox utilities.
+List available slitherbox utilities.
 """
 
 def main(args):
