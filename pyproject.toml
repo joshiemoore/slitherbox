@@ -5,9 +5,8 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "slitherbox"
 version = "0.0.1"
-authors = [
-  { name="joshiemoore", email="jxm5210@g.rit.edu" },
-]
+author = "joshiemoore"
+author_email = "jxm5210@g.rit.edu"
 description = "A drop-in pure-Python replacement for common shell utilities"
 readme = "README.md"
 license = { file="LICENSE.txt" }
