@@ -8,7 +8,7 @@ import os
 import sys
 
 
-def main(args):
+def main(*args):
     if len(args) != 0:
         print('Usage: tty')
             return 1

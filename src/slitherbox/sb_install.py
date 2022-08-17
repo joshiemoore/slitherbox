@@ -8,7 +8,7 @@ main slitherbox script.
 import os
 
 
-def main(args):
+def main(*args):
     SLITHERBOX_ROOT = args[0]
     utilities = args[1:]
 

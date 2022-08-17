@@ -9,7 +9,7 @@ import shutil
 import argparse
 
 
-def main(args):
+def main(*args):
     parser = argparse.ArgumentParser(description='Remove a file or directory.')
     parser.add_argument('files', type=str, nargs='+')
     parser.add_argument('-r', action='store_true',

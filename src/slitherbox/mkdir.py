@@ -8,7 +8,7 @@ import os
 import argparse
 
 
-def main(args):
+def main(*args):
     parser = argparse.ArgumentParser(description='Create a directory.')
     parser.add_argument('dir', type=str)
     _args = parser.parse_args(args=args)

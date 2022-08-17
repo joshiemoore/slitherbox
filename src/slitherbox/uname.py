@@ -8,7 +8,7 @@ import platform
 import argparse
 
 
-def main(args):
+def main(*args):
     parser = argparse.ArgumentParser(description='Print system information to standard output.')
     parser.add_argument('-a', '--all', action='store_true', help='Print all information')
     parser.add_argument('-m', '--machine', action='store_true', help='Print the machine hardware name')

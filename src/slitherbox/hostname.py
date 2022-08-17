@@ -7,7 +7,7 @@ Print the name of the host to standard output.
 import platform
 
 
-def main(args):
+def main(*args):
     if len(args) != 0:
         print('Usage: hostname')
         return 1

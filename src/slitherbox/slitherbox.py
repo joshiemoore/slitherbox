@@ -37,7 +37,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 
 
-def run_utility(utility_name, args):
+def run_utility(utility_name, *args):
     # load utility module
     utility_spec = importlib.util.spec_from_file_location(
         f'{utility_name}',
@@ -52,7 +52,7 @@ def run_utility(utility_name, args):
         return 1
     
     # run utility
-    return utility.main(args)
+    return utility.main(*args)
 
 
 def list_utilities():
@@ -62,6 +62,7 @@ def list_utilities():
             continue
         result.append(util.replace('.py', ''))
     return result
+
 
 def sb_main(*args):
     # clean up invoked name
@@ -88,7 +89,7 @@ def sb_main(*args):
     elif invoked_name == 'sb_list':
         _args = list_utilities()
 
-    status_code = run_utility(invoked_name, _args)
+    status_code = run_utility(invoked_name, *_args)
 
     # exit with status code returned by utility
     if status_code is None or not isinstance(status_code, int):
@@ -98,6 +99,7 @@ def sb_main(*args):
         )
 
     return status_code
+
 
 if __name__ == '__main__':
     status_code = sb_main(*sys.argv)

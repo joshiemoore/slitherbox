@@ -8,7 +8,7 @@ import shutil
 import argparse
 
 
-def main(args):
+def main(*args):
     parser = argparse.ArgumentParser(description='Search the user\'s environment for specified executables.')
     parser.add_argument('args', type=str, nargs='+', help='Executable(s) to search for')
     _args = parser.parse_args(args=args)

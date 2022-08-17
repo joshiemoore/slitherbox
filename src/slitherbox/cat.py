@@ -8,7 +8,7 @@ import sys
 import argparse
 
 
-def main(args):
+def main(*args):
     parser = argparse.ArgumentParser(description='Print the contents of a file to stdout.')
     parser.add_argument('file', type=str)
     _args = parser.parse_args(args=args)

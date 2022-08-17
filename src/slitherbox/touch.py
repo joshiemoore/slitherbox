@@ -8,7 +8,7 @@ import os
 import argparse
 
 
-def main(args):
+def main(*args):
     parser = argparse.ArgumentParser(description='Create a file, or update a file\'s timestamps.')
     parser.add_argument('file', type=str)
     _args = parser.parse_args(args=args)

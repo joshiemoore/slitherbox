@@ -8,7 +8,7 @@ import shutil
 import argparse
 
 
-def main(args):
+def main(*args):
     parser = argparse.ArgumentParser(description='Move or rename a file.')
     parser.add_argument('source', type=str)
     parser.add_argument('destination', type=str)

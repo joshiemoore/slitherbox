@@ -7,7 +7,7 @@ Print the hardware architecture to standard output.
 import platform
 
 
-def main(args):
+def main(*args):
     if len(args) != 0:
         print('Usage: arch')
         return 1
