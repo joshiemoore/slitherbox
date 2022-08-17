@@ -17,9 +17,9 @@ Installation and uninstallation of slitherbox is simple, and will not overwrite 
 slitherbox uses the same trick as BusyBox, in that symbolic links representing different commands are made to
 the main slitherbox script. The main script is aware of what name it was run with and executes the corresponding utility.
 
-You only need Python 3 and git to install slitherbox.
+You only need Python 3 and pip to install slitherbox.
 
-1. Clone this repository to the desired installation directory.
+1. Run `python3 -m pip install slitherbox`.
 2. Run `$ ./slitherbox sb_install`. This will create symlinks in the installation directory.
 3. Add the installation directory to the *beginning* of your `$PATH` so your shell finds slitherbox
    commands before it finds your native system commands. For example, you could do this by adding

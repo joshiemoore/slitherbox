@@ -41,7 +41,7 @@ def run_utility(utility_name, args):
     # load utility module
     utility_spec = importlib.util.spec_from_file_location(
         f'{utility_name}',
-        f'{SLITHERBOX_ROOT}/src/slitherbox/{utility_name}.py'
+        f'{SLITHERBOX_ROOT}/{utility_name}.py'
     )
     utility = importlib.util.module_from_spec(utility_spec)
 
@@ -56,10 +56,9 @@ def run_utility(utility_name, args):
 
 
 def list_utilities():
-    ignore = ['__pycache__']
     result = []
-    for util in os.listdir(SLITHERBOX_ROOT + '/src/slitherbox/'):
-        if util in ignore:
+    for util in os.listdir(SLITHERBOX_ROOT):
+        if '.py' not in util:
             continue
         result.append(util.replace('.py', ''))
     return result
