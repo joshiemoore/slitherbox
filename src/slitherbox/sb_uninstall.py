@@ -19,5 +19,5 @@ def main(args):
             os.unlink(symlink_path)
             uninstall_count += 1
 
-    print(f'\nUnlinked {uninstall_count} utilities')
+    print(f'\nUnlinked {uninstall_count} utilities from {SLITHERBOX_ROOT}')
     return 0

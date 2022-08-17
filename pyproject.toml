@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "slitherbox"
-version = "0.0.1"
+version = "0.0.2"
 authors = [
   { name="joshiemoore", email="jxm5210@g.rit.edu" }
 ]
@@ -14,3 +14,12 @@ license = { file="LICENSE.txt" }
 
 [project.urls]
 "Homepage" = "https://github.com/joshiemoore/slitherbox"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+slitherbox = ["slitherbox"]

@@ -12,7 +12,7 @@ def main(args):
     SLITHERBOX_ROOT = args[0]
     utilities = args[1:]
 
-    sb_main = SLITHERBOX_ROOT + '/slitherbox'
+    sb_main = SLITHERBOX_ROOT + '/slitherbox.py'
 
     install_count = 0
     for util in utilities:
@@ -22,5 +22,5 @@ def main(args):
             os.symlink(sb_main, symlink_path)
             install_count += 1
 
-    print(f'\nLinked {install_count} utilities')
+    print(f'\nLinked {install_count} utilities in {SLITHERBOX_ROOT}')
     return 0

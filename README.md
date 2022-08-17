@@ -12,7 +12,7 @@ will work with any shell.
 
 slitherbox is free software licensed under the terms of GPLv3 or later.
 
-## Installation
+## Installation from PyPI
 Installation and uninstallation of slitherbox is simple, and will not overwrite any existing utilities on your system.
 slitherbox uses the same trick as BusyBox, in that symbolic links representing different commands are made to
 the main slitherbox script. The main script is aware of what name it was run with and executes the corresponding utility.
@@ -20,12 +20,27 @@ the main slitherbox script. The main script is aware of what name it was run wit
 You only need Python 3 and pip to install slitherbox.
 
 1. Run `python3 -m pip install slitherbox`.
-2. Run `$ ./slitherbox sb_install`. This will create symlinks in the installation directory.
+
+2. Open a Python interpreter and run the following:
+   ```
+   >>> from slitherbox.slitherbox import sb_main
+   >>> sb_main('sb_install')
+   ```
+
+   This will create symlinks in the installation directory.
+
 3. Add the installation directory to the *beginning* of your `$PATH` so your shell finds slitherbox
    commands before it finds your native system commands. For example, you could do this by adding
    `$PATH = ['/path/to/slitherbox'] + $PATH` to your `.xonshrc` if you use xonsh.
+
+   The installation directory is displayed at the end of the `sb_install` command you ran in step 2.
+
+   **NOTE:** You may need to also run `chmod +x slitherbox.py` inside the install directory to make
+   the main script executable, or the commands won't work properly in your shell. 
+
 4. Verify the installation was successful by running `$ which echo` and observing that the resulting
    path is inside the installation directory.
+
 5. You can now run all slitherbox utilities from your shell. If you run a command that is not
    implemented in slitherbox, but does exist elsewhere in your path, then the existing native
    utility will still be run.
@@ -36,7 +51,7 @@ To re-enable slitherbox, do step 2 again.
 You can view a list of available commands by running `$ sb_list`.
 
 slitherbox commands can also be run without installing the symlinks by running the slitherbox script
-directly: `$ ./slitherbox <command> [args...]`.
+directly: `$ ./slitherbox.py <command> [args...]`.
 
 ### Security Note
 Of course, it would be trivial for a user on your system to modify slitherbox utility scripts to

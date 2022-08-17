@@ -49,7 +49,7 @@ def run_utility(utility_name, args):
         utility_spec.loader.exec_module(utility)
     except FileNotFoundError:
         print(f'No such slitherbox utility: {utility_spec}')
-        exit(1)
+        return 1
     
     # run utility
     return utility.main(args)
@@ -63,33 +63,32 @@ def list_utilities():
         result.append(util.replace('.py', ''))
     return result
 
-
-if __name__ == '__main__':
+def sb_main(*args):
     # clean up invoked name
-    invoked_name = sys.argv[0].replace('./', '')
+    invoked_name = args[0].replace('./', '')
     invoked_name = os.path.basename(
         os.path.normpath(invoked_name)
     )
 
-    if invoked_name == 'slitherbox':
-        if len(sys.argv) < 2:
+    if 'slitherbox' in invoked_name:
+        if len(args) < 2:
             print(__header__)
             print(__copyright__)
             exit()
-        invoked_name = sys.argv[1]
-        args = sys.argv[2:]
+        invoked_name = args[1]
+        _args = args[2:]
     else:
-        args = sys.argv[1:]
+        _args = args[1:]
 
     # handle special slitherbox-internal commands
     if invoked_name == 'sb_install':
-        args = [SLITHERBOX_ROOT] + list_utilities()
+        _args = [SLITHERBOX_ROOT] + list_utilities()
     elif invoked_name == 'sb_uninstall':
-        args = [SLITHERBOX_ROOT] + list_utilities()
+        _args = [SLITHERBOX_ROOT] + list_utilities()
     elif invoked_name == 'sb_list':
-        args = list_utilities()
+        _args = list_utilities()
 
-    status_code = run_utility(invoked_name, args)
+    status_code = run_utility(invoked_name, _args)
 
     # exit with status code returned by utility
     if status_code is None or not isinstance(status_code, int):
@@ -98,4 +97,8 @@ if __name__ == '__main__':
             f'but {invoked_name} returned: {status_code}'
         )
 
+    return status_code
+
+if __name__ == '__main__':
+    status_code = sb_main(*sys.argv)
     exit(status_code)
