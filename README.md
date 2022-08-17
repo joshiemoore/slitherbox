@@ -12,13 +12,14 @@ will work with any shell.
 
 slitherbox is free software licensed under the terms of GPLv3 or later.
 
-## Installation from PyPI
+## Installation
 Installation and uninstallation of slitherbox is simple, and will not overwrite any existing utilities on your system.
 slitherbox uses the same trick as BusyBox, in that symbolic links representing different commands are made to
 the main slitherbox script. The main script is aware of what name it was run with and executes the corresponding utility.
 
-You only need Python 3 and pip to install slitherbox.
+You only need Python 3 and pip (or git) to install slitherbox.
 
+### Installation from PyPI
 1. Run `python3 -m pip install slitherbox`.
 
 2. Open a Python interpreter and run the following:
@@ -44,6 +45,13 @@ You only need Python 3 and pip to install slitherbox.
 5. You can now run all slitherbox utilities from your shell. If you run a command that is not
    implemented in slitherbox, but does exist elsewhere in your path, then the existing native
    utility will still be run.
+
+### Installation from git
+1. Clone this repository, and cd into it.
+
+2. Run `$ python3 slitherbox.py sb_install` to create the symlinks in the installation directory.
+
+3. Follow steps 3-5 from the `Installation from PyPI` section above.
 
 The slitherbox symlinks can be removed by running `$ sb_uninstall`, restoring use of your native utilities.
 To re-enable slitherbox, do step 2 again.
