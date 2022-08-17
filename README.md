@@ -77,7 +77,7 @@ command's name. For example, if you want to run your command as `$ mycoolcmd`, n
 The basic structure of a slitherbox utility is as follows:
 
 ```
-def main(args):
+def main(*args):
     # DO STUFF
     return 0
 ```
