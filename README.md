@@ -46,7 +46,7 @@ execute access, but no write access.
 
 ## Utilities
 
-All slitherbox commands are implemented in the `utilities/` directory. See these files for examples of how
+All slitherbox commands are implemented in the `src/slitherbox/` directory. See these files for examples of how
 slitherbox commands work.
 
 In the future, we may add more directories to host non-core contrib/miscellaneous/fun commands to keep
@@ -56,7 +56,7 @@ them separate from the core utilities and allow them to be optionally installed.
 Adding commands to slitherbox is very simple, even for Python beginners. Many core utilities are just
 wrappers for one line calls to the Python standard library.
 
-To create a new command, first create a Python file in the `utilities/` directory corresponding to your
+To create a new command, first create a Python file in the `src/utilities/` directory corresponding to your
 command's name. For example, if you want to run your command as `$ mycoolcmd`, name the file `mycoolcmd.py`.
 
 The basic structure of a slitherbox utility is as follows:
